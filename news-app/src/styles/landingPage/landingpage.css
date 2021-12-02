@@ -3,3 +3,9 @@
   flex-direction: row;
   padding: 2em;
 }
+
+@media screen and (max-width: 777px) {
+  .landing-page {
+    flex-direction: column;
+  }
+}

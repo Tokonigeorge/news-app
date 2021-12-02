@@ -11,6 +11,8 @@
 .image-card {
   background-color: brown;
   width: 35%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .big-news-content {
