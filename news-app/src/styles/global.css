@@ -6,3 +6,24 @@
 .text {
   color: #58677d;
 }
+
+.news-author {
+  color: #2d3848;
+  text-transform: uppercase;
+  font-size: 0.7em;
+}
+
+.news-title {
+  color: #2d3848;
+  font-weight: 700;
+  font-size: 1.2em;
+  margin-top: -0.2em;
+  margin-bottom: -0.3em;
+}
+
+.news-des {
+  color: #2d3848;
+  font-weight: 400;
+  font-size: 0.8em;
+  line-height: 1.5em;
+}

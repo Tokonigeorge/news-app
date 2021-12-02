@@ -1,0 +1,19 @@
+.big-news-card {
+  display: flex;
+  align-items: stretch;
+  height: auto;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin-top: 2em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.image-card {
+  background-color: brown;
+  width: 35%;
+}
+
+.big-news-content {
+  padding: 0.5em 1em;
+  width: 65%;
+}
