@@ -2,20 +2,17 @@ import React from "react";
 import "../../styles/landingPage/bignewscard.css";
 import "../../styles/global.css";
 
-const Bignewscard = ({}) => {
+const Bignewscard = ({ news }) => {
+  console.log(news);
   return (
     <div className="big-news-card">
-      <div className="image-card"></div>
+      <div className="image-card">
+        <img src={news?.urlToImage || ""} alt="" />
+      </div>
       <div className="big-news-content">
-        <p className="news-author">Author</p>
-        <p className="news-title">
-          This is the headline title for the news, I guess
-        </p>
-        <p className="news-des">
-          This is a little news description for you. Saturday night live
-          starring Jim Carrey, hey that rhymes, what do you say about that?
-          Pussy cat, Pussy cat
-        </p>
+        <p className="news-author">{news?.author || "Anon"}</p>
+        <p className="news-title">{news?.title}</p>
+        <p className="news-des">{news?.description}</p>
       </div>
     </div>
   );

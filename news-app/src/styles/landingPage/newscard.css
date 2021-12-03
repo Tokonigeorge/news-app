@@ -5,7 +5,7 @@
   /* background-color: #ffffff; */
   border-radius: 8px;
   display: flex;
-  align-items: stretch;
+  align-items: space-between;
   transition: all 0.3s ease-in;
 }
 
@@ -18,10 +18,20 @@
   font-size: 0.8em;
 }
 
-.newscard-image {
-  min-height: 3em;
+.newscard-date {
+  font-size: 0.8em;
+}
+
+.newscard-image img {
+  height: 4em;
+  object-fit: cover;
   border-radius: 4px;
-  width: 4em;
-  background-color: brown;
+  width: 100px;
   margin-right: 10px;
+}
+
+@media screen and (max-width: 950px) and (min-width: 777px) {
+  .newscard-date {
+    display: none;
+  }
 }

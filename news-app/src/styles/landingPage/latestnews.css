@@ -3,6 +3,12 @@
   margin-right: 2em;
 }
 
+@media screen and (max-width: 777px) {
+  .latest-news {
+    margin-right: 0;
+  }
+}
+
 .pagination-div {
   display: grid;
   grid-template-columns: auto auto;
@@ -10,4 +16,10 @@
   grid-template-rows: auto;
   grid-gap: 1.5em;
   margin-top: 2em;
+}
+
+@media screen and (max-width: 556px) {
+  .pagination-div {
+    grid-template-columns: auto;
+  }
 }

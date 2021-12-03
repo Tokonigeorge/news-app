@@ -2,20 +2,16 @@ import React from "react";
 import "../../styles/global.css";
 import "../../styles/landingPage/smallnewscard.css";
 
-const Smallnewscard = () => {
+const Smallnewscard = ({ author, title, url, des }) => {
   return (
     <div className="small-news-card">
-      <div className="small-image-card"></div>
+      <div className="small-image-card">
+        <img src={url} alt="" />
+      </div>
       <div className="small-news-content">
-        <p className="news-author">Author</p>
-        <p className="news-title">
-          This is the headline title for the news, I guess
-        </p>
-        <p className="news-des">
-          This is a little news description for you. Saturday night live
-          starring Jim Carrey, hey that rhymes, what do you say about that?
-          Pussy cat, Pussy cat
-        </p>
+        <p className="news-author">{author}</p>
+        <p className="news-title">{title}</p>
+        <p className="news-des">{des}</p>
       </div>
     </div>
   );
