@@ -34,7 +34,7 @@ const Landing = () => {
   return (
     <div className="landing-page">
       {loading && !data ? (
-        <p>Loading</p>
+        <p>Loading...</p>
       ) : error ? (
         <p>Error</p>
       ) : (

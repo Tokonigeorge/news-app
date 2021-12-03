@@ -4,7 +4,7 @@ import "../../styles/global.css";
 import Searchbar from "./Searchbar";
 import Bignewscard from "./Bignewscard";
 import Smallnewscard from "./Smallnewscard";
-import { BrowserRouter as Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Routes, Route, Link } from "react-router-dom";
 import NewsPage from "../../pages/Newspage";
 
 const Latestnews = ({ bignews }) => {
@@ -84,13 +84,6 @@ const Latestnews = ({ bignews }) => {
             <ArrowRight />
           </span>
         </div>
-        {
-          <Switch>
-            <Route path="/news">
-              <NewsPage />
-            </Route>
-          </Switch>
-        }
       </div>
     </>
   );

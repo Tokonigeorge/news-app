@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import Landing from "./pages/Landing";
 import Newspage from "./pages/Newspage";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   return (
@@ -11,11 +11,10 @@ function App() {
         {/* <Landing /> */}
         {/* <Newspage /> */}
 
-        <Switch>
-          <Route path="/">
-            <Landing />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/news" element={<Newspage />} />
+        </Routes>
       </div>
     </Router>
   );
