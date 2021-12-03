@@ -1,0 +1,35 @@
+.comment-tile {
+  margin-top: 2em;
+  display: flex;
+  background-color: #ffffff;
+  align-items: flex-start;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment-tile img {
+  width: 40px;
+  height: 40px;
+  margin-right: 1em;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  margin-top: -1em;
+  font-size: 0.8em;
+  color: #2d3848;
+  font-weight: 700;
+}
+
+.comment-header p:first-child {
+  margin-right: 1em;
+  text-transform: uppercase;
+}
+
+.comment {
+  font-size: 0.9em;
+  margin-top: -0.5em;
+  color: #2d3848;
+}

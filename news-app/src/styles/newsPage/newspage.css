@@ -22,6 +22,14 @@
   text-align: left;
 }
 
+.news-image img {
+  width: 100%;
+  height: auto;
+  margin-top: 2em;
+  object-fit: cover;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 @media screen and (max-width: 1000px) {
   .newspage {
     padding: 2em 4em;
