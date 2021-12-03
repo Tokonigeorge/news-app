@@ -4,24 +4,27 @@ import "../../styles/global.css";
 import Searchbar from "./Searchbar";
 import Bignewscard from "./Bignewscard";
 import Smallnewscard from "./Smallnewscard";
-import { BrowserRouter as Routes, Route, Link } from "react-router-dom";
-import NewsPage from "../../pages/Newspage";
+import { BrowserRouter as Link } from "react-router-dom";
+import { useDataContextVal } from "../../context/dataContext";
+import {
+  updateMainNews,
+  updateLatestNews,
+  updateActive,
+} from "../../context/actions";
 
-const Latestnews = ({ bignews }) => {
-  const [data, setData] = useState();
-  const [active, setActive] = useState(1);
-  const [prevarrowState, setPrevArrowState] = useState(null);
-  const [nextArrowState, setNextArrowState] = useState(2);
+const Latestnews = ({ bignews, latestNews }) => {
+  const [{ latestNews, active }, dispatch] = useDataContextVal();
+  // const [active, setActive] = useState(1);
   const paginationNum = [1, 2, 3];
   const handlePagination = (i) => {
-    setActive(i);
+    updateActive(i);
   };
 
   const handlePrevArrow = () => {
     if (active === 1) {
       return;
     } else if (active > 1) {
-      setActive((active) => active - 1);
+      updateActive((active) => active - 1);
     }
   };
 
@@ -29,40 +32,35 @@ const Latestnews = ({ bignews }) => {
     if (active === 3) {
       return;
     } else if (active < 3) {
-      setActive((active) => active + 1);
+      updateActive((active) => active + 1);
     }
   };
 
   useEffect(() => {
-    const fetchData = () => {
-      fetch(
-        `https://newsapi.org/v2/everything?&q=covid&language=en&pageSize=15&page=${active}&apiKey=71dfd63489ab4d5ba815b04cceb3ce8c`
-      )
-        .then((result) => result.json())
-        .then((i) => setData(i.articles))
-        .catch((err) => console.error(error));
-    };
-    fetchData();
-    console.log(data);
-  }, [active]);
+    dispatch(updateMainNews(bignews));
+    dispatch(updateLatestNews(latestNews));
+  }, [bignews, latestNews]);
   return (
     <>
       <div className="latest-news">
         <p className="topheader">Latest News</p>
         <Searchbar />
-        <Link to="/news">
+        <Link to="/mainnews">
           <Bignewscard news={bignews} />
         </Link>
         <div className="pagination-div">
-          {data?.map((i, indx) => {
+          {latestNews?.map((i, indx) => {
             return (
-              <Smallnewscard
-                author={i.author}
-                title={i.title}
-                url={i.urlToImage}
-                des={i.description}
-                key={indx}
-              />
+              <Link to={`/latestnews/${i.url}`}>
+                {" "}
+                <Smallnewscard
+                  author={i.author}
+                  title={i.title}
+                  url={i.urlToImage}
+                  des={i.description}
+                  key={indx}
+                />
+              </Link>
             );
           })}
         </div>

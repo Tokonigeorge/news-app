@@ -2,45 +2,45 @@ import React, { useState, useEffect } from "react";
 import Latestnews from "../components/landingPage/Latestnews";
 import News from "../components/landingPage/News";
 import "../styles/landingPage/landingpage.css";
-import { news } from "../api/mockupnews";
-
-const fetchData = () => {
-  fetch(
-    "https://newsapi.org/v2/top-headlines?country=ng&pageSize=10&apiKey=71dfd63489ab4d5ba815b04cceb3ce8c"
-  )
-    .then((result) => result.json())
-    .then((i) => (data = i.articles))
-    .catch((err) => console.error(err));
-};
+import { useDataContextVal } from "../context/dataContext";
 
 const Landing = () => {
-  const [data, setData] = useState();
+  const [{ active }] = useDataContextVal();
+  const [news, setNews] = useState();
+  const [latestNews, setLatestNews] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchData = () => {
-      fetch(
-        "https://newsapi.org/v2/top-headlines?country=ng&pageSize=10&apiKey=71dfd63489ab4d5ba815b04cceb3ce8c"
-      )
-        .then((result) => result.json())
-        .then((i) => setData(i.articles), setLoading(!data))
-        .catch((err) => setError(true));
+      Promise.all([
+        fetch(
+          "https://newsapi.org/v2/top-headlines?country=ng&pageSize=10&apiKey=71dfd63489ab4d5ba815b04cceb3ce8c"
+        )
+          .then((result) => result.json())
+          .then((i) => setNews(i.articles)),
+        fetch(
+          `https://newsapi.org/v2/everything?&q=covid&language=en&pageSize=15&page=${active}&apiKey=71dfd63489ab4d5ba815b04cceb3ce8c`
+        )
+          .then((result) => result.json())
+          .then((i) => setLatestNews(i.articles)),
+      ])
+        .then(setLoading(!news && !latestNews))
+        .catch((err) => setError(err && !loading));
     };
-    !data && fetchData();
-    console.log(data);
+    !news && !latestNews && fetchData();
   }, []);
 
   return (
     <div className="landing-page">
-      {loading && !data ? (
+      {loading && !news && !latestNews ? (
         <p>Loading...</p>
       ) : error ? (
         <p>Error</p>
       ) : (
         <>
-          <Latestnews bignews={data?.[0]} news={news} />
-          <News data={data.slice(1)} />
+          <Latestnews bignews={news?.[0]} latestNews={latestNews} />
+          <News data={news?.slice(1)} />
         </>
       )}
     </div>

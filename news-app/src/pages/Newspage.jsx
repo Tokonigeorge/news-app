@@ -2,7 +2,8 @@ import React from "react";
 import "../styles/newsPage/newspage.css";
 import Imageslider from "../components/newsPage/Imageslider";
 
-const Newspage = () => {
+const Newspage = ({ news }) => {
+  console.log(news);
   return (
     <div className="newspage">
       <div className="newspage-header">
