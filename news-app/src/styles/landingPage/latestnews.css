@@ -7,6 +7,10 @@
   .latest-news {
     margin-right: 0;
   }
+  .pagination-div {
+    grid-template-columns: auto;
+    grid-gap: 50px;
+  }
 }
 
 .pagination-div {
@@ -22,4 +26,24 @@
   .pagination-div {
     grid-template-columns: auto;
   }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.pagination div {
+  padding: 0.5em 0.7em;
+}
+
+.pagination span {
+  padding: 0.5em 0.4em;
+}
+
+.pagination div:hover,
+.pagination span:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }
