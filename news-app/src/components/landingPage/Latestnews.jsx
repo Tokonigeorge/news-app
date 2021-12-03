@@ -4,7 +4,7 @@ import "../../styles/global.css";
 import Searchbar from "./Searchbar";
 import Bignewscard from "./Bignewscard";
 import Smallnewscard from "./Smallnewscard";
-import { BrowserRouter as Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useDataContextVal } from "../../context/dataContext";
 import {
   updateMainNews,
@@ -12,7 +12,7 @@ import {
   updateActive,
 } from "../../context/actions";
 
-const Latestnews = ({ bignews, latestNews }) => {
+const Latestnews = ({ bignews, _latestNews }) => {
   const [{ latestNews, active }, dispatch] = useDataContextVal();
   // const [active, setActive] = useState(1);
   const paginationNum = [1, 2, 3];
@@ -38,8 +38,8 @@ const Latestnews = ({ bignews, latestNews }) => {
 
   useEffect(() => {
     dispatch(updateMainNews(bignews));
-    dispatch(updateLatestNews(latestNews));
-  }, [bignews, latestNews]);
+    dispatch(updateLatestNews(_latestNews));
+  }, [bignews, _latestNews]);
   return (
     <>
       <div className="latest-news">
@@ -49,7 +49,7 @@ const Latestnews = ({ bignews, latestNews }) => {
           <Bignewscard news={bignews} />
         </Link>
         <div className="pagination-div">
-          {latestNews?.map((i, indx) => {
+          {_latestNews?.map((i, indx) => {
             return (
               <Link to={`/latestnews/${i.url}`}>
                 {" "}

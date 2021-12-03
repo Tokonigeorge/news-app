@@ -39,7 +39,7 @@ const Landing = () => {
         <p>Error</p>
       ) : (
         <>
-          <Latestnews bignews={news?.[0]} latestNews={latestNews} />
+          <Latestnews bignews={news?.[0]} _latestNews={latestNews} />
           <News data={news?.slice(1)} />
         </>
       )}

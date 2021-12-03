@@ -1,19 +1,20 @@
 import React from "react";
 import "../styles/newsPage/newspage.css";
 import Imageslider from "../components/newsPage/Imageslider";
+import { convertDate } from "../functions";
 
 const Newspage = ({ news }) => {
-  console.log(news);
   return (
     <div className="newspage">
       <div className="newspage-header">
-        <p className="newspage-date">29th May</p>
-        <p className="news-author">Title</p>
+        <p className="newspage-date">{convertDate(news?.publishedAt)}</p>
+        <p className="news-author">{news?.author || "Anon"}</p>
       </div>
-      <p className="news-title">
-        This is the bane of true entrepreneurship and something
+      <p className="news-title">{news?.title}</p>
+      <p className="news-content">
+        {news?.content.split("[")?.[0] ||
+          "Couldn't load content, please refresh"}
       </p>
-      <p className="news-content"></p>
       <Imageslider />
     </div>
   );

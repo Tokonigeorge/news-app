@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "../../styles/landingPage/news.css";
 import "../../styles/global.css";
 import Newscard from "./Newscard";
-import { BrowserRouter as Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useDataContextVal } from "../../context/dataContext";
 import { updateTopNews } from "../../context/actions";
 

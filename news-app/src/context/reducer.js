@@ -13,5 +13,7 @@ export const reducer = (state, action) => {
       return { ...state, topNews: action.topNews };
     case "SET_LATESTNEWS":
       return { ...state, latestNews: action.latestNews };
+    case "SET_ACTIVE":
+      return { ...state, active: action.active };
   }
 };
