@@ -4,6 +4,8 @@ import "../../styles/global.css";
 import Searchbar from "./Searchbar";
 import Bignewscard from "./Bignewscard";
 import Smallnewscard from "./Smallnewscard";
+import { BrowserRouter as Switch, Route, Link } from "react-router-dom";
+import NewsPage from "../../pages/Newspage";
 
 const Latestnews = ({ bignews }) => {
   const [data, setData] = useState();
@@ -44,42 +46,53 @@ const Latestnews = ({ bignews }) => {
     console.log(data);
   }, [active]);
   return (
-    <div className="latest-news">
-      <p className="topheader">Latest News</p>
-      <Searchbar />
-      <Bignewscard news={bignews} />
-      <div className="pagination-div">
-        {data?.map((i, indx) => {
-          return (
-            <Smallnewscard
-              author={i.author}
-              title={i.title}
-              url={i.urlToImage}
-              des={i.description}
+    <>
+      <div className="latest-news">
+        <p className="topheader">Latest News</p>
+        <Searchbar />
+        <Link to="/news">
+          <Bignewscard news={bignews} />
+        </Link>
+        <div className="pagination-div">
+          {data?.map((i, indx) => {
+            return (
+              <Smallnewscard
+                author={i.author}
+                title={i.title}
+                url={i.urlToImage}
+                des={i.description}
+                key={indx}
+              />
+            );
+          })}
+        </div>
+        <div className="pagination">
+          <span onClick={() => handlePrevArrow()}>
+            <ArrowLeft />
+          </span>
+          {paginationNum?.map((i, indx) => (
+            <div
+              style={{ backgroundColor: active === indx + 1 && "#2d3848" }}
               key={indx}
-            />
-          );
-        })}
-      </div>
-      <div className="pagination">
-        <span onClick={() => handlePrevArrow()}>
-          <ArrowLeft />
-        </span>
-        {paginationNum?.map((i, indx) => (
-          <div
-            style={{ backgroundColor: active === indx + 1 && "#2d3848" }}
-            key={indx}
-            onClick={() => handlePagination(i)}
-          >
-            {i}
-          </div>
-        ))}
+              onClick={() => handlePagination(i)}
+            >
+              {i}
+            </div>
+          ))}
 
-        <span onClick={() => handleNextArrow()}>
-          <ArrowRight />
-        </span>
+          <span onClick={() => handleNextArrow()}>
+            <ArrowRight />
+          </span>
+        </div>
+        {
+          <Switch>
+            <Route path="/news">
+              <NewsPage />
+            </Route>
+          </Switch>
+        }
       </div>
-    </div>
+    </>
   );
 };
 
