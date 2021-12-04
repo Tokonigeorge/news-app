@@ -1,5 +1,5 @@
 .news-card {
-  width: 100%;
+  /* width: 100%; */
   padding: 0.6em 0.5em;
   margin-top: 0.5em;
   /* background-color: #ffffff; */
@@ -20,6 +20,7 @@
 
 .newscard-date {
   font-size: 0.8em;
+  color: #2d3848;
 }
 
 .newscard-image img {
@@ -33,6 +34,18 @@
 @media screen and (max-width: 950px) and (min-width: 777px) {
   .newscard-date {
     display: none;
+  }
+}
+
+@media screen and (max-width: 930px) and (min-width: 777px) {
+  .news-card {
+    flex-direction: column;
+  }
+
+  .newscard-image img {
+    margin-right: 0;
+    margin-bottom: 0.5em;
+    width: 100%;
   }
 }
 
