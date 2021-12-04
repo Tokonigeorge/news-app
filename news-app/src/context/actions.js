@@ -25,3 +25,17 @@ export const updateActive = (val) => {
     active: val,
   };
 };
+
+export const updateComment = (comment) => {
+  return {
+    type: "SET_COMMENT",
+    comment: comment,
+  };
+};
+
+export const updateEditComment = (comment) => {
+  return {
+    type: "SET_EDITCOMMENT",
+    editComment: comment,
+  };
+};

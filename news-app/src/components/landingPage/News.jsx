@@ -11,7 +11,7 @@ const News = ({ data }) => {
 
   useEffect(() => {
     dispatch(updateTopNews(data));
-  }, [data]);
+  }, []);
 
   return (
     <div className="news">
@@ -23,7 +23,7 @@ const News = ({ data }) => {
               title={i.title}
               date={i.publishedAt}
               urlImage={i.urlToImage}
-              key={indx}
+              key={`${indx} + ${i.title}`}
             />
           </Link>
         );

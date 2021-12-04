@@ -3,7 +3,6 @@ import "../../styles/landingPage/bignewscard.css";
 import "../../styles/global.css";
 
 const Bignewscard = ({ news }) => {
-  console.log(news);
   return (
     <div className="big-news-card">
       <div className="image-card">

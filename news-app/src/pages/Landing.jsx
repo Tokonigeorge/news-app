@@ -34,9 +34,9 @@ const Landing = () => {
   return (
     <div className="landing-page">
       {loading && !news && !latestNews ? (
-        <p>Loading...</p>
+        <div className="dot-elastic"></div>
       ) : error ? (
-        <p>Error</p>
+        <p>Please Reload :/</p>
       ) : (
         <>
           <Latestnews bignews={news?.[0]} _latestNews={latestNews} />

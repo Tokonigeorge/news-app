@@ -6,6 +6,8 @@
   padding: 1em;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 .comment-tile img {
@@ -32,4 +34,29 @@
   font-size: 0.9em;
   margin-top: -0.5em;
   color: #2d3848;
+  position: relative;
+}
+
+.comment-manipulate {
+  position: absolute;
+  background-color: #f6f8fd;
+  right: 2em;
+  top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 4px;
+  z-index: 100;
+  padding: 1em 0;
+}
+
+.comment-manipulate * {
+  padding: 0.5em 1.5em;
+  cursor: pointer;
+  font-size: 0.9em;
+  color: #2d3848;
+}
+
+.comment-manipulate span:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }

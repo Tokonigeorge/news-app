@@ -3,6 +3,15 @@ export const initialState = {
   topNews: [],
   latestNews: [],
   active: 1,
+  comment: [
+    {
+      id: 1,
+      name: "Bukola",
+      comment: "This is my comment",
+      date: "Jan 3 1991",
+    },
+  ],
+  editComment: { id: null, name: "", comment: "" },
 };
 
 export const reducer = (state, action) => {
@@ -15,5 +24,9 @@ export const reducer = (state, action) => {
       return { ...state, latestNews: action.latestNews };
     case "SET_ACTIVE":
       return { ...state, active: action.active };
+    case "SET_COMMENT":
+      return { ...state, comment: action.comment };
+    case "SET_EDITCOMMENT":
+      return { ...state, editComment: action.editComment };
   }
 };
